@@ -185,6 +185,27 @@ class MainController extends Controller
 
         }
 
+        // One-to-many локации и персонажа 
+        function updateLocationToCharacters ($characters) 
+        {
+            try {
+                foreach ($characters as $character) {
+                    if (empty($character['location']['url'])) {
+                        echo "Пропуск персонажа: URL локации отсутствует.\n";
+                        continue;
+                    }
+                    // $character['location']['url']): https://rickandmortyapi.com/api/location/3
+                    $tmp = explode('/', $character['location']['url']);
+                    $location_id = (int)end($tmp);
+                    $character_id = $character['id'];
+        
+                    DB::table('characters')->where('id', $character_id)->update(['location_id' => $location_id]);
+                }
+            } catch (\Exception $e) {
+                echo $e;
+            }
+        }
+        
         // Вставка данных
         function checkDb() 
         {
@@ -195,6 +216,7 @@ class MainController extends Controller
             if (Characters::get()->count() ===  0) {
                 $characters = getAllCharacters();
                 insertCharacters($characters);
+                updateLocationToCharacters($characters);
             }
             if (Episodes::get()->count() ===  0) {
                 $episodes = getAllEpisodes();
