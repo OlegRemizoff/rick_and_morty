@@ -42,14 +42,21 @@
                             <td> {{ $character->status }} </td>
                             <td> {{ $character->species }} </td>
                             <td> {{ $character->gender }} </td>
-                            <td> {{ $character->location->name }} </td>
+                            <?php if (!empty($character->location->name)): ?>
+                                <td> {{ $character->location->name }}  </td>
+                            <?php endif; ?>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-                <a href="{{ route('destroy') }}" class="btn btn-outline-danger w-100 mt-2 custom-btn" onclick="return confirm('Вы уверены, что хотите очистить базу данных?');">
-                    Очистить базу данных
-                </a>
+                <div class="d-flex justify-content-between align-items-center">
+                    {{ $characters->links() }}
+                        <span style="margin-top: -20px;">
+                        <a href="{{ route('destroy') }}" class="btn btn-outline-danger custom-btn" onclick="return confirm('Вы уверены, что хотите очистить базу данных?');">
+                            Очистить базу данных
+                        </a>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -87,3 +94,5 @@
 </body>
 
 </html>
+
+

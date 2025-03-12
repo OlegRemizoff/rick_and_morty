@@ -16,18 +16,9 @@ class MainController extends Controller
     public function index()
     {
 
-        $characters = Characters::with(['episodes', 'location'])->take(5)->get() ?? [];
+        $characters = Characters::with(['episodes', 'location'])->paginate(5) ?? [];
         $total = Characters::get()->count() ?? 0;
         return view('index', compact('characters', 'total'));
-
-
-        // $posts = Post::with('category', 'comments.children')->paginate(5);
-        // foreach ($posts as $post) {
-        //     $post->total_comments = $post->comments->reduce(function ($carry, $comment) {
-        //         return $carry + 1 + $comment->children->count();
-        //     }, 0);
-        // }
-        return view('blog.posts.index', compact('posts'));
 
     }
 
