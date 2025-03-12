@@ -28,6 +28,10 @@
                         <tr>
                             <th scope="col">Миниатюра</th>
                             <th scope="col">Имя</th>
+                            <th scope="col">Статус</th>
+                            <th scope="col">Вид</th>
+                            <th scope="col">Пол</th>
+                            <th scope="col">Локация</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,6 +39,10 @@
                         <tr>
                             <td class=""><img src="{{ $character->image }}" alt="" style="width: 55px;"></td>
                             <td class=""><a href="#">{{ $character->name }}</a></td>
+                            <td> {{ $character->status }} </td>
+                            <td> {{ $character->species }} </td>
+                            <td> {{ $character->gender }} </td>
+                            <td> {{ $character->location->name }} </td>
                         </tr>
                         @endforeach
                     </tbody>
