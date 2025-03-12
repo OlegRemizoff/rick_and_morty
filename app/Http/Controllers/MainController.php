@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 use App\Models\Characters;
 use App\Models\Episodes;
@@ -22,7 +22,6 @@ class MainController extends Controller
 
 
     }
-
 
     // Заполнение базы данных
     public function fillTheDatabase() 
@@ -187,18 +186,42 @@ class MainController extends Controller
         }
 
         // Вставка данных
-        $characters = getAllCharacters();
-        $episodes = getAllEpisodes();
-        $locations = getAllLocations();
+        function checkDb() 
+        {
+            if (Locations::get()->count() === 0) {
+                $locations = getAllLocations();
+                insertLocations($locations);
+            }
+            if (Characters::get()->count() ===  0) {
+                $characters = getAllCharacters();
+                insertCharacters($characters);
+            }
+            if (Episodes::get()->count() ===  0) {
+                $episodes = getAllEpisodes();
+                insertEpisodes($episodes);
+            }
+    
+        }
 
-
-        insertCharacters($characters);
-        insertLocations($locations);
-        insertEpisodes($episodes);
-
+        checkDb();
         return redirect()->route('home');
+
 
     }
   
+    // Обнуление таблиц
+    public function destroy()
+    {
+        $tables = ['locations', 'characters', 'episodes'];
+    
+        foreach ($tables as $table) {
+            if (Schema::hasTable($table)) {
+                DB::table($table)->truncate();
+            }
+        }
+    
+        return redirect()->route('home');
+    }
+
 }
 

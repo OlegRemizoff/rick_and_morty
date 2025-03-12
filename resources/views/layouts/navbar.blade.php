@@ -8,14 +8,16 @@
         <a class="nav-link d-flex align-items-center gap-2 text-decoration-none transition-all hover-text-primary" aria-current="page" href="/">
           <i class="bi bi-people-fill"></i>
           <span>Персонажи</span>
-          <?php if (empty($id)): ?>
+          <?php if (!empty($total)): ?>
             <span class="badge bg-secondary"><?php echo $total; ?></span>
           <?php endif; ?>
         </a>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Скачать csv
-          </a>
+          <?php if (!empty($total)): ?>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Скачать csv
+            </a>
+          <?php endif; ?>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" download href="../characters_all.csv">Персонажи</a></li>
             <li>
@@ -26,7 +28,7 @@
         </li>
         <a class="nav-link " aria-current="page" href="https://github.com/OlegRemizoff/rickandmortyapi" target="_blank">GitHub</a>
       </ul>
-      <?php if (empty($id)): ?>
+      <?php if (!empty($total)): ?>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button disabled class="btn btn-outline-success" type="submit">Search</button>
