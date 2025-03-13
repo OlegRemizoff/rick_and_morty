@@ -1,7 +1,5 @@
-# :rocket: Notice
-
-<p align="center">
-<img src="/img/logo.png">
+<p align="">
+    <img  src="/public/image/rick.gif" title="Главная">
 </p>
 
 ## :link: [Перейти на сайт](http://f1087222.xsph.ru/)
@@ -39,9 +37,7 @@
 
 </details>
 
-### Результат
-<p align="center">
-    <img  src="/public/image/rick.gif" title="Главная">
-</p>
+
+
 
 
