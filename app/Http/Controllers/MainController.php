@@ -22,6 +22,13 @@ class MainController extends Controller
 
     }
 
+    public function show($id)
+    {
+        $character = Characters::with(['location', 'episodes'])->where('id', '=', $id)->firstOrFail();
+        return view('show', compact('character'));
+    }
+
+
     // Заполнение базы данных
     public function fillTheDatabase() 
     {

@@ -7,7 +7,7 @@
 ## :link: [Перейти на сайт](http://f1087222.xsph.ru/)
 ## :computer: Стэк
 - **PHP**
-- **SQL**
+- **MySQL**
 - **Laravel** 
 
 #### Тестовое Laravel Middle
@@ -39,13 +39,9 @@
 
 </details>
 
-### Список персонажей
+### Результат
 <p align="center">
-    <img  src="/img/characters.png" title="Главная">
+    <img  src="/public/image/rick.gif" title="Главная">
 </p>
 
-### Детально
-<p align="center">
-    <img  src="/img/detail.png" title="Подробнее">
-</p>
 
