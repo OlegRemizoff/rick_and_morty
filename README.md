@@ -1,5 +1,7 @@
-<p align="">
-    <img  src="/public/image/rick.gif" title="Главная">
+# :rocket: Notice
+
+<p align="center">
+<img src="/public/image/logo.png">
 </p>
 
 ## :link: [Перейти на сайт](http://f1087222.xsph.ru/)
@@ -8,7 +10,7 @@
 - **MySQL**
 - **Laravel** 
 
-#### Тестовое Laravel Middle
+### Тестовое Laravel Middle
 <details>
 <summary>Нажмите, чтобы посмотреть подробности</summary>
 
@@ -38,6 +40,25 @@
 </details>
 
 
+ <br />
 
 
+### Список персонажей
+<p align="center">
+    <img  src="/public/image/characters_list.png" title="Главная">
+</p>
 
+### Детально
+<p align="center">
+    <img  src="/public/image/characters_detail.png" title="Подробнее">
+</p>
+
+### Персонажи excel
+<p align="center">
+    <img  src="/public/image/characters_excel.png" title="exel">
+</p>
+
+### Очистка БД
+<p align="center">
+    <img  src="/public/image/db.gif" title="exel">
+</p>
