@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
+use App\Exports\CharactersExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use App\Models\Characters;
 use App\Models\Episodes;
 use App\Models\Locations;
@@ -251,5 +254,14 @@ class MainController extends Controller
         return redirect()->route('home');
     }
 
+    //Ecxel
+    public function export() 
+    {
+        return Excel::download(new CharactersExport, 'characters.xlsx');
+    }
+
 }
+
+
+
 

@@ -12,20 +12,7 @@
             <span class="badge bg-secondary"><?php echo $total; ?></span>
           <?php endif; ?>
         </a>
-        <li class="nav-item dropdown">
-          <?php if (!empty($total)): ?>
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Скачать csv
-            </a>
-          <?php endif; ?>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" download href="../characters_all.csv">Персонажи</a></li>
-            <li>
-              <!-- <hr class="dropdown-divider"> -->
-            </li>
-            <!-- <li><a class="dropdown-item" href="#">Эпизоды</a></li> -->
-          </ul>
-        </li>
+        <a class="nav-link " aria-current="page" download href="{{ route('export') }}">Скачать excel</a>
         <a class="nav-link " aria-current="page" href="https://github.com/OlegRemizoff/rickandmortyapi" target="_blank">GitHub</a>
       </ul>
       <?php if (!empty($total)): ?>
