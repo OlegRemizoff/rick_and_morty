@@ -43,15 +43,15 @@
                             <td> {{ $character->species }} </td>
                             <td> {{ $character->gender }} </td>
                             <?php if (!empty($character->location->name)): ?>
-                                <td> {{ $character->location->name }}  </td>
-                            <?php endif; ?> 
+                                <td> {{ $character->location->name }} </td>
+                            <?php endif; ?>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-between align-items-center">
                     {{ $characters->links() }}
-                        <span style="margin-top: -20px;">
+                    <span style="margin-top: -20px;">
                         <a href="{{ route('destroy') }}" class="btn btn-outline-danger custom-btn" onclick="return confirm('Вы уверены, что хотите очистить базу данных?');">
                             Очистить базу данных
                         </a>
@@ -91,8 +91,8 @@
 
 
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>
-
-

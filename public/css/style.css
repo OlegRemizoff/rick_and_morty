@@ -8,3 +8,10 @@
 }
 
 
+.modal-lg-custom {
+    max-width: 800px; /* Ширина модального окна */
+}
+.modal-body-custom {
+    max-height: 400px; /* Максимальная высота контента */
+    overflow-y: auto; /* Включаем вертикальную прокрутку */
+}
