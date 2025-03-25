@@ -14,18 +14,20 @@ class CharactersExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        return Characters::join('locations', 'characters.location_id', '=', 'locations.id')
-        ->join('character_episode', 'characters.id', '=', 'character_episode.character_id')
-        ->join('episodes', 'character_episode.episode_id', '=', 'episodes.id')
-        ->select(
+        return Characters::query()
+        ->select([
+            'characters.id',
             'characters.name',
             'characters.status',
             'characters.species',
             'characters.gender',
-            'locations.name as locations_name',
-            'locations.url',
-            DB::raw('GROUP_CONCAT(episodes.name SEPARATOR ", ") as episode_names')
-        )
+            'locations.name as location_name',
+            'locations.url as location_url',
+            DB::raw("GROUP_CONCAT(DISTINCT episodes.name SEPARATOR ', ') as episodes")
+        ])
+        ->leftJoin('character_episode', 'characters.id', '=', 'character_episode.character_id')
+        ->leftJoin('episodes', 'episodes.id', '=', 'character_episode.episode_id')
+        ->leftJoin('locations', 'characters.location_id', '=', 'locations.id')
         ->groupBy([
             'characters.id',
             'characters.name',
@@ -33,10 +35,11 @@ class CharactersExport implements FromCollection, WithHeadings
             'characters.species',
             'characters.gender',
             'locations.name',
-            'locations.url',
-            'episodes.name'
+            'locations.url'
         ])
-        ->get();
+        ->get()
+        ->makeHidden(['id']);
+        
     }
 
     public function headings(): array
