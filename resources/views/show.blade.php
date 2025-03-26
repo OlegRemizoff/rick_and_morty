@@ -12,10 +12,11 @@
 <body>
     <div class="container">
         <div class="image-container">
-            <img src="{{ asset('image/logo1.webp') }}" class="img-fluid" alt="Логотип">
+        <a href="{{ route('home') }}">
+        <img src="{{ asset('image/logo1.webp') }}" class="img-fluid" alt="Логотип"></a>
         </div>
         <div style="margin-bottom: 10px;">
-            @include('layouts.navbar')
+            @include('partials.navbar')
         </div>
         <div class="row">
             <div class="col-md-4">

@@ -5,7 +5,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <a class="nav-link d-flex align-items-center gap-2 text-decoration-none transition-all hover-text-primary" aria-current="page" href="/">
+        <a class="nav-link d-flex align-items-center gap-2 text-decoration-none transition-all hover-text-primary" aria-current="page" href="{{ route('home') }}">
           <i class="bi bi-people-fill"></i>
           <span>Персонажи</span>
           <?php if (!empty($total)): ?>
@@ -20,12 +20,11 @@
       </ul>
       <?php if (!empty($total)): ?>
         <form class="d-flex" role="search">
-
           <!-- <a href="{{ route('destroy') }}" class="btn btn-outline-danger custom-btn" onclick="return confirm('Вы уверены, что хотите очистить базу данных?');">
             Очистить базу данных
           </a> -->
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button disabled class="btn btn-outline-success" type="submit">Search</button>
+          <input class="form-control me-2" id="search" type="search" placeholder="Search" aria-label="Search">
+          <!-- <button disabled class="btn btn-outline-success" type="submit">Search</button> -->
         </form>
       <?php endif ?>
     </div>

@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
@@ -16,10 +17,11 @@
     @if (count($characters) > 0)
     <div class="container">
         <div class="image-container">
-            <img src="{{ asset('image/logo1.webp') }}" class="img-fluid" alt="Логотип">
+            <a href="{{ route('home') }}">
+            <img src="{{ asset('image/logo1.webp') }}" class="img-fluid" alt="Логотип"></a>
         </div>
         <div style="margin-bottom: 10px;">
-            @include('layouts.navbar')
+            @include('partials.navbar')
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -67,7 +69,7 @@
             <img src="{{ asset('image/logo1.webp') }}" class="img-fluid" alt="Логотип">
         </div>
         <div style="margin-bottom: 10px;">
-            @include('layouts.navbar')
+            @include('partials.navbar')
         </div>
         <div class="row">
             <div class="col-md-12 text-center">

@@ -13,6 +13,7 @@ use App\Models\Characters;
 use App\Models\Episodes;
 use App\Models\Locations;
 
+use function Laravel\Prompts\search;
 
 class MainController extends Controller
 {
@@ -252,6 +253,24 @@ class MainController extends Controller
         }
     
         return redirect()->route('home');
+    }
+
+    // Поиск
+    public function search(Request $request)
+    {
+        $request->validate([
+            'search' => 'required'
+        ], [
+            'search.required' => 'Поле поиска не должно быть пустым.'
+        ]);
+    
+        $search = trim($request->input('search'));
+        $search_result = Characters::with('location') // Жадная загрузка локации
+                        ->where('name', 'LIKE', "%{$search}%")
+                        ->get();
+        
+        // Возвращаем только HTML таблицы, а не всю страницу
+        return view('partials.search_table', compact('search_result'));
     }
 
     //Ecxel
