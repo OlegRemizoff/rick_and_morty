@@ -14,6 +14,7 @@
         </a>
         <a class="nav-link " aria-current="page" download href="{{ route('export') }}">Скачать excel</a>
         <a class="nav-link " aria-current="page" href="https://github.com/OlegRemizoff/rick_and_morty" target="_blank">GitHub</a>
+        <a class="nav-link " aria-current="page" href="{{ route('browse') }}">Storage</a>
         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Что это?
         </a>

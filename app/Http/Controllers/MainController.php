@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 use App\Exports\CharactersExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -279,7 +281,45 @@ class MainController extends Controller
         return Excel::download(new CharactersExport, 'characters.xlsx');
     }
 
+
+
+
+
+    public function browse()
+
+        //Написать на Laravel страницу, которая выводит содержимое папки storage проекта: blade страница с таблицей файлов/папок.
+        //Имена вложенных папок являются ссылками, по клику открывается страница  выбранной папки, отображающая содержимое.
+
+    {
+        // Получаем текущий путь из GET-параметра 
+        $currentPath = request('path', storage_path()); // или base_path()
+        
+        if (!File::exists($currentPath)) {
+            abort(404, "Директория не найдена");
+        }
+    
+        // Получаем список папок и файлов
+        $directories = File::directories($currentPath);
+        $files = File::files($currentPath);
+    
+        return view('browse', [
+            'directories' => $directories,
+            'files' => $files,
+            'currentPath' => $currentPath,
+        ]);
+    }
+
+
+
+
+
+
 }
+
+
+
+
+
 
 
 
